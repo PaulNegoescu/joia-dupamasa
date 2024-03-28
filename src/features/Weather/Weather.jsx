@@ -15,10 +15,12 @@ export function Weather() {
         const promise = fetch(
           `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=1d260c5f4897b555ae217809965ad963`
         );
-        promise.then((res) => res.json()).then((data) => { 
-          setWeather(data);
-          setValues({city: data.name, country: data.sys.country})
-        });
+        promise
+          .then((res) => res.json())
+          .then((data) => {
+            setWeather(data);
+            setValues({ city: data.name, country: data.sys.country });
+          });
       },
       () => setErrorMessage('Could not get location. Please try again later.')
     );
@@ -29,7 +31,7 @@ export function Weather() {
     // const newValues = {...values};
     // newValues[inputName] = e.target.value;
     // setValues(newValues);
-    setValues({...values, [e.target.name]: e.target.value});
+    setValues({ ...values, [e.target.name]: e.target.value });
   }
 
   async function handleSubmit(e) {
