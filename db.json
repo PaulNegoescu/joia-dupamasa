@@ -1,0 +1,18 @@
+{
+  "users": [
+    {
+      "id": "dasdas",
+      "fName": "Paul",
+      "lName": "Negoescu",
+      "email": "paul.negoescu@nagarro.com",
+      "password": "dasdas.dasdasdas"
+    }
+  ],
+  "boardgames": [
+    {
+      "id": "dasdas",
+      "title": "dadasd",
+      "userId": "dasdas"
+    }
+  ]
+}
