@@ -1,8 +1,7 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
-import { Counter } from "../features/Counter/Counter";
-import { Weather } from "../features/Weather/Weather";
-import { Nav } from "./Nav/Nav";
+import { Nav } from "../Nav/Nav";
+import { Auth } from "../../features/Auth/Auth";
+import './App.css';
 
 export function App() {
   return (
@@ -10,8 +9,7 @@ export function App() {
       <Nav />
       <Routes>
         <Route path="/" element={ <h1>Homepage</h1> } />
-        <Route path="/counter" element={ <Counter /> } />
-        <Route path="/weather" element={ <Weather /> } />
+        <Route path="/register" element={<Auth />} />
         <Route path="*" element={ <h1>404</h1> } />
       </Routes>
     </BrowserRouter>
