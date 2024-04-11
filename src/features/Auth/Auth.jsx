@@ -32,26 +32,26 @@ export function Auth() {
   return (
     <>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate>
+      <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid grid-cols-[150px,_1fr] gap-1">
         <label htmlFor="email">Email</label>
-        <input type="email" id="email" {...register('email')} />
-        {errors.email && <p>{errors.email.message}</p>}
+        <input type="email" id="email" {...register('email')} className="border-2 border-stone-900 rounded-sm px-2 py-1" />
+        {errors.email && <p className="col-span-full text-red-700">{errors.email.message}</p>}
         <label htmlFor="password">Password</label>
-        <input type="password" id="password" {...register('password')} />
-        {errors.password && <p>{errors.password.message}</p>}
+        <input type="password" id="password" {...register('password')} className="border border-stone-900 rounded-sm  px-2 py-1" />
+        {errors.password && <p className="col-span-full text-red-700">{errors.password.message}</p>}
         <label htmlFor="retypePassword">Retype Password</label>
         <input
           type="password"
           id="retypePassword"
-          {...register('retypePassword')}
+          {...register('retypePassword')} className="border border-stone-900 rounded-sm  px-2 py-1"
         />
-        {errors.retypePassword && <p>{errors.retypePassword.message}</p>}
+        {errors.retypePassword && <p className="col-span-full text-red-700">{errors.retypePassword.message}</p>}
         <label htmlFor="firstName">First Name</label>
-        <input type="text" id="fistName" {...register('firstName')} />
-        {errors.firstName && <p>{errors.firstName.message}</p>}
+        <input type="text" id="fistName" {...register('firstName')} className="border border-stone-900 rounded-sm  px-2 py-1" />
+        {errors.firstName && <p className="col-span-full text-red-700">{errors.firstName.message}</p>}
         <label htmlFor="lastName">Last Name</label>
-        <input type="text" id="lastName" {...register('lastName')} />
-        {errors.lastName && <p>{errors.lastName.message}</p>}
+        <input type="text" id="lastName" {...register('lastName')} className="border border-stone-900 rounded-sm  px-2 py-1" />
+        {errors.lastName && <p className="col-span-full text-red-700">{errors.lastName.message}</p>}
         <button type="submit">Register</button>
       </form>
     </>
