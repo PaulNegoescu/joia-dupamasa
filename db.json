@@ -1,11 +1,25 @@
 {
   "users": [
     {
-      "id": "dasdas",
-      "fName": "Paul",
-      "lName": "Negoescu",
-      "email": "paul.negoescu@nagarro.com",
-      "password": "dasdas.dasdasdas"
+      "email": "p@p.com",
+      "password": "$2a$10$f7X.am.z/km8kNon3Ol9TejRmNvOzBnYmXEa8c6sIJ/y4dLJINUfq",
+      "firstName": "Paul",
+      "lastName": "Negoescu",
+      "id": 1
+    },
+    {
+      "email": "a@a.com",
+      "password": "$2a$10$VrCqoTMa13nptkhYVGZI8OigHTw3brDZJ57Fdc/4CuBuoyaGbDpR.",
+      "firstName": "Paul",
+      "lastName": "Negoescu",
+      "id": 2
+    },
+    {
+      "email": "b@p.com",
+      "password": "$2a$10$/tLR3zpbFvryVl7iH1wg1ukLkIFfUzaRa1GEA7elyQO8tk./7oxwi",
+      "firstName": "Paul",
+      "lastName": "Negoescu",
+      "id": 3
     }
   ],
   "boardgames": [

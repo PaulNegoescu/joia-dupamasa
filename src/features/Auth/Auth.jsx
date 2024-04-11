@@ -1,17 +1,25 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, ref, string } from 'yup';
+import { toast } from 'react-toastify';
+import { useLocation } from 'react-router-dom';
 import { Form } from '@/components/forms/Form';
 import { Input } from '@/components/forms/Input';
 import { PrimaryButton } from '@/components/forms/Buttons';
 
-const schema = object({
+const baseSchema = {
   email: string()
     .required('Please enter an email address')
     .email('The email address needs to be valid.'),
   password: string()
     .required('Please enter a password')
     .min(4, 'The password needs to be at least 4 characters long.'),
+};
+
+const loginSchema = object(baseSchema);
+
+const registerSchema = object({
+  ...baseSchema,
   retypePassword: string()
     .required('Please type your password again.')
     .oneOf([ref('password')], 'The passwords did not match.'),
@@ -20,21 +28,46 @@ const schema = object({
 });
 
 export function Auth() {
+  const { pathname } = useLocation();
+  let isRegister = true;
+  if (pathname === '/login') {
+    isRegister = false;
+  }
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver: yupResolver(isRegister ? registerSchema : loginSchema),
   });
 
-  function onSubmit(formData) {
-    console.log(formData);
+  async function onSubmit(formData) {
+    const apiUrl = import.meta.env.VITE_API_URL;
+    const endpoint = isRegister ? '/register' : '/login';
+
+    const { retypePassword, ...sendToServer } = formData;
+
+    const data = await fetch(`${apiUrl}${endpoint}`, {
+      method: 'POST',
+      body: JSON.stringify(sendToServer),
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    }).then((res) => res.json());
+
+    if (!data.accessToken) {
+      toast.error(data);
+      return;
+    }
+
+    // put this into context
+    console.log(data);
   }
 
   return (
     <>
-      <h1>Register</h1>
+      <h1>{isRegister ? 'Register' : 'Login'}</h1>
       <Form onSubmit={handleSubmit(onSubmit)}>
         <Input
           type="email"
@@ -48,26 +81,32 @@ export function Auth() {
           labelText="Password"
           errorMessage={errors?.password?.message}
         />
-        <Input
-          type="password"
-          {...register('retypePassword')}
-          labelText="Retype Password"
-          errorMessage={errors?.retypePassword?.message}
-        />
-        <Input
-          type="text"
-          {...register('firstName')}
-          labelText="First Name"
-          errorMessage={errors?.firstName?.message}
-        />
-        <Input
-          type="text"
-          {...register('lastName')}
-          labelText="Last Name"
-          errorMessage={errors?.lastName?.message}
-        />
+        {isRegister && (
+          <>
+            <Input
+              type="password"
+              {...register('retypePassword')}
+              labelText="Retype Password"
+              errorMessage={errors?.retypePassword?.message}
+            />
+            <Input
+              type="text"
+              {...register('firstName')}
+              labelText="First Name"
+              errorMessage={errors?.firstName?.message}
+            />
+            <Input
+              type="text"
+              {...register('lastName')}
+              labelText="Last Name"
+              errorMessage={errors?.lastName?.message}
+            />
+          </>
+        )}
 
-        <PrimaryButton className="col-start-2">Register</PrimaryButton>
+        <PrimaryButton className="col-start-2">
+          {isRegister ? 'Register' : 'Login'}
+        </PrimaryButton>
       </Form>
     </>
   );
