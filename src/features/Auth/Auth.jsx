@@ -1,6 +1,9 @@
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, ref, string } from 'yup';
+import { Form } from '@/components/forms/Form';
+import { Input } from '@/components/forms/Input';
+import { PrimaryButton } from '@/components/forms/Buttons';
 
 const schema = object({
   email: string()
@@ -32,28 +35,40 @@ export function Auth() {
   return (
     <>
       <h1>Register</h1>
-      <form onSubmit={handleSubmit(onSubmit)} noValidate className="grid grid-cols-[150px,_1fr] gap-1">
-        <label htmlFor="email">Email</label>
-        <input type="email" id="email" {...register('email')} className="border-2 border-stone-900 rounded-sm px-2 py-1" />
-        {errors.email && <p className="col-span-full text-red-700">{errors.email.message}</p>}
-        <label htmlFor="password">Password</label>
-        <input type="password" id="password" {...register('password')} className="border border-stone-900 rounded-sm  px-2 py-1" />
-        {errors.password && <p className="col-span-full text-red-700">{errors.password.message}</p>}
-        <label htmlFor="retypePassword">Retype Password</label>
-        <input
-          type="password"
-          id="retypePassword"
-          {...register('retypePassword')} className="border border-stone-900 rounded-sm  px-2 py-1"
+      <Form onSubmit={handleSubmit(onSubmit)}>
+        <Input
+          type="email"
+          {...register('email')}
+          labelText="Email"
+          errorMessage={errors?.email?.message}
         />
-        {errors.retypePassword && <p className="col-span-full text-red-700">{errors.retypePassword.message}</p>}
-        <label htmlFor="firstName">First Name</label>
-        <input type="text" id="fistName" {...register('firstName')} className="border border-stone-900 rounded-sm  px-2 py-1" />
-        {errors.firstName && <p className="col-span-full text-red-700">{errors.firstName.message}</p>}
-        <label htmlFor="lastName">Last Name</label>
-        <input type="text" id="lastName" {...register('lastName')} className="border border-stone-900 rounded-sm  px-2 py-1" />
-        {errors.lastName && <p className="col-span-full text-red-700">{errors.lastName.message}</p>}
-        <button type="submit">Register</button>
-      </form>
+        <Input
+          type="password"
+          {...register('password')}
+          labelText="Password"
+          errorMessage={errors?.password?.message}
+        />
+        <Input
+          type="password"
+          {...register('retypePassword')}
+          labelText="Retype Password"
+          errorMessage={errors?.retypePassword?.message}
+        />
+        <Input
+          type="text"
+          {...register('firstName')}
+          labelText="First Name"
+          errorMessage={errors?.firstName?.message}
+        />
+        <Input
+          type="text"
+          {...register('lastName')}
+          labelText="Last Name"
+          errorMessage={errors?.lastName?.message}
+        />
+
+        <PrimaryButton className="col-start-2">Register</PrimaryButton>
+      </Form>
     </>
   );
 }
