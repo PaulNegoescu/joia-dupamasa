@@ -9,7 +9,9 @@ export const Input = forwardRef(function Input(
 
   return (
     <>
-      <label htmlFor={id}>{labelText}</label>
+      <label htmlFor={id} className="text-right self-center">
+        {labelText}
+      </label>
       <input
         id={id}
         ref={ref}
@@ -20,7 +22,7 @@ export const Input = forwardRef(function Input(
         )}
       />
       {errorMessage && (
-        <p className="col-span-full text-red-700">{errorMessage}</p>
+        <p className="col-span-full text-red-700 col-start-2">{errorMessage}</p>
       )}
     </>
   );

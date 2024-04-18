@@ -1,11 +1,13 @@
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { object, ref, string } from 'yup';
 import { toast } from 'react-toastify';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Form } from '@/components/forms/Form';
 import { Input } from '@/components/forms/Input';
 import { PrimaryButton } from '@/components/forms/Buttons';
+import { useAuthContext } from './AuthContext';
 
 const baseSchema = {
   email: string()
@@ -33,6 +35,15 @@ export function Auth() {
   if (pathname === '/login') {
     isRegister = false;
   }
+  const { user, login } = useAuthContext();
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(user) {
+      navigate('/');
+    }
+  }, [user, navigate]);
 
   const {
     register,
@@ -62,7 +73,8 @@ export function Auth() {
     }
 
     // put this into context
-    console.log(data);
+    toast.success("You've logged in successfully!")
+    login(data);
   }
 
   return (
