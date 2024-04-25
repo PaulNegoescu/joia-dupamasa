@@ -48,7 +48,7 @@ export function Pagination({ itemsPerPage = 10, numberOfItems = 0 }) {
         key={i}
         to={`?page=${i}`}
         className={clsx(
-          'p-2 aspect-square grow fßnter',
+          'p-2 aspect-square grow flex items-center justify-center',
           { 'rounded-full bg-stone-300': Number(currentPage) === i }
         )}
       >
