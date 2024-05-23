@@ -86,3 +86,9 @@ export function Pagination({ itemsPerPage = 10, numberOfItems = 0 }) {
     </section>
   );
 }
+
+/**
+ * Mai trebuie sa facem:
+ * 1. Extras current page, poate cu un custom hook
+ * 2. Pus niste text sr-only in butoanele de next si prev
+ */
