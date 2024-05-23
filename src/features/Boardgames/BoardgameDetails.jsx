@@ -15,6 +15,7 @@ import {
 import { useAuthContext } from '..';
 import { Button, DestructiveButton } from '@/components/forms/Buttons';
 import { toast } from 'react-toastify';
+import { H1 } from '@/components/ui/Headings';
 
 const apiUrl = import.meta.env.VITE_API_URL;
 
@@ -53,7 +54,7 @@ export function BoardgameDetails() {
 
   return (
     <>
-      <h1 className="text-3xl my-4">{game.name}</h1>
+      <H1>{game.name}</H1>
 
       {user && (
         <>
