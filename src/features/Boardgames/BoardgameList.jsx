@@ -39,13 +39,15 @@ export function BoardgameList() {
   return (
     <>
       <H1>Boardgames</H1>
-      <Link
-        to="add"
-        className="inline-flex items-center border border-stone-900 rounded px-4 py-2 bg-cyan-200"
-      >
-        <HiMiniPlusCircle className="mr-2 text-2xl" />
-        Add a Game
-      </Link>
+      {user && (
+        <Link
+          to="add"
+          className="inline-flex items-center border border-stone-900 rounded px-4 py-2 bg-cyan-200"
+        >
+          <HiMiniPlusCircle className="mr-2 text-2xl" />
+          Add a Game
+        </Link>
+      )}
       <div className="grid grid-cols-responsive gap-4">
         {boardgames.map((bg) => (
           <Card key={bg.id} game={bg} />

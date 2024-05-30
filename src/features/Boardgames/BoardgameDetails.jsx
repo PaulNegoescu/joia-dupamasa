@@ -58,7 +58,7 @@ export function BoardgameDetails() {
 
       {user && (
         <>
-          <Link to="" className="border border-stone-900 rounded px-4 py-2 justify-self-start bg-cyan-200 inline-block">Edit</Link>
+          <Link to="edit" className="border border-stone-900 rounded px-4 py-2 justify-self-start bg-cyan-200 inline-block">Edit</Link>
           
           <AlertDialog>
             <AlertDialogTrigger asChild>

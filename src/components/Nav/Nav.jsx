@@ -20,7 +20,10 @@ export function Nav() {
         {user && (
           <li className="ml-auto">
             Welcome, {user.firstName}! 
-            <a href="#" onClick={logout}>Logout</a>
+            <a href="#" onClick={(e) => {
+              e.preventDefault();
+              logout();
+            }}>Logout</a>
           </li>
         )}
         {!user && (

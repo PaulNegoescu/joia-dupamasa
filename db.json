@@ -10721,6 +10721,21 @@
       "otherRanks": {
         "wargames": 31
       }
+    },
+    {
+      "otherRanks": {},
+      "playtime": {},
+      "numberOfPlayers": {},
+      "description": "dasdas asd da",
+      "alternateNames": [
+        "Your alternate name",
+        "English"
+      ],
+      "image": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.printables.com%2Fmedia%2Fprints%2F436015%2Fimages%2F3607226_4a234021-9310-40f1-8ac5-5d97ef53c143%2Fearth-2.jpeg&f=1&nofb=1&ipt=cfcfb255cb0ceea42ae2ecd79465f308dd4ccaeb7b674efee8b3f38776c4ddc6&ipo=images",
+      "thumbnail": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmedia.printables.com%2Fmedia%2Fprints%2F436015%2Fimages%2F3607226_4a234021-9310-40f1-8ac5-5d97ef53c143%2Fearth-2.jpeg&f=1&nofb=1&ipt=cfcfb255cb0ceea42ae2ecd79465f308dd4ccaeb7b674efee8b3f38776c4ddc6&ipo=images",
+      "name": "Test Edited",
+      "bggId": 1234,
+      "id": 286
     }
   ]
 }

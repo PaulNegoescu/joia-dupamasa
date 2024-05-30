@@ -30,7 +30,7 @@ const registerSchema = object({
 });
 
 export function Auth() {
-  const { pathname } = useLocation();
+  const { pathname, state } = useLocation();
   let isRegister = true;
   if (pathname === '/login') {
     isRegister = false;
@@ -41,9 +41,10 @@ export function Auth() {
 
   useEffect(() => {
     if(user) {
-      navigate('/');
+      const path = state?.from ? state.from : '/';
+      navigate(path);
     }
-  }, [user, navigate]);
+  }, [user, navigate, state]);
 
   const {
     register,
